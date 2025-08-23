@@ -11,7 +11,87 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
+	 <title>Welcome Popup</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f0;
+    }
+
+    /* Overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 239, 239, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Pop-up box */
+    .popup-box {
+      background-color: #fffafc;
+      border: 2px solid #ffd6e7;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .popup-box h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: #ff82ac;
+    }
+
+    .popup-box p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .popup-box button {
+      background-color: #ffb6c1;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .popup-box button:hover {
+      background-color: #ff9cb3;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pop-up -->
+  <div class="popup-overlay" id="welcomePopup">
+    <div class="popup-box">
+      <h2>🌸 Welcome!</h2>
+      <p>So glad you stopped by. Hope you find something you love here!</p>
+      <button onclick="closePopup()">Enter Site</button>
+    </div>
+  </div>
+</head>
+
+
 	<body class="is-preload">
  <!-- Your Main Site Content -->
 		
@@ -308,6 +388,7 @@
 	</body>
 
 </html>
+
 
 
 
