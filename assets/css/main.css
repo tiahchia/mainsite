@@ -71,12 +71,7 @@
 		transform: rotate(359deg);
 	}
 }
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fff8f0;
-}
+
 
 .popup-overlay {
   position: fixed;
@@ -102,17 +97,6 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.popup-box h2 {
-  margin: 0 0 10px;
-  font-size: 24px;
-  color: #ff82ac;
-}
-
-.popup-box p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 20px;
-}
 
 .popup-box button {
   background-color: #ffb6c1;
@@ -2111,5 +2095,6 @@ input, select, textarea {
 		#footer .copyright a {
 			color: inherit;
 		}
+
 
 
