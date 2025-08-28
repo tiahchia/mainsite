@@ -24,20 +24,24 @@
     }
 
     /* Overlay */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
-      background-color: rgba(36, 38, 41, 0.975);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      animation: fadeIn 0.5s ease-in-out;
-    }
+   .popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgba(36, 38, 41, 0.9); /* slightly more transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.5s ease-in-out;
+  -webkit-animation: fadeIn 0.5s ease-in-out;
+  will-change: opacity;
+}
+
 
     /* Pop-up box */
     .popup-box {
@@ -122,10 +126,8 @@
       		<p>
 			<h1>Simple & Static Web Design</h1>
 			<h3>Hi There,</h3>
-			<br>
-				<p>
 			
-  		
+				<p>
 		<br>I’m <strong>Tiah</strong> —a front-end developer still early in my tech 
 		<br>journey but I do have caffeine &#x2615;, curiosity, and a solid grasp of code. 
 		<br>All jokes aside I am committed to helping startups 
@@ -133,7 +135,7 @@
 		<br>At Simple and Static, we specialize in creating lightweight, secure, and fast-loading static websites. 
 		<br>Whether you’re a small business, freelancer, or creative, our simple and static web design approach keeps your online presence professional, affordable, and easy to manage.
 
-		
+		<br>
 		<br> &#x1F449; Rebranding?
 		<br>&#x1F449; Starting from scratch? 
 		<br>&#x1F449; Promoting an event? 
@@ -143,6 +145,7 @@
 		 These templates are fully customizable and work within the 
 		<br>CC License (3.0) &copy;
 		<br>No complicated platforms or scary hidden fees — just elegant and effective web design.
+		<br>
 		<br> <p>&darr; &darr; &darr; 
 		<br>
 		<br>
@@ -533,6 +536,7 @@
 	</body>
 
 </html>
+
 
 
 
