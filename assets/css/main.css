@@ -75,7 +75,7 @@
 .button-row {
   display: flex;            /* aligns children horizontally */
   flex-wrap: wrap;          /* allows wrapping on smaller screens */
-  gap: 10px;                /* space between buttons */
+  gap: 5px;                /* space between buttons */
   justify-content: center;  /* center buttons horizontally */
   margin: 20px 0;
 }
@@ -2106,6 +2106,7 @@ input, select, textarea {
 		#footer .copyright a {
 			color: inherit;
 		}
+
 
 
 
