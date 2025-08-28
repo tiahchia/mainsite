@@ -1,12 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic");
 
-/*
-	Multiverse by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-
-*/
 
 @-moz-keyframes spinner {
 	0% {
@@ -72,17 +66,7 @@
 	}
 }
 
-.button-row {
-  display: flex;            /* aligns children horizontally */
-  flex-wrap: wrap;          /* allows wrapping on smaller screens */
-  gap: 5px;                /* space between buttons */
-  justify-content: center;  /* center buttons horizontally */
-  margin: 20px 0;
-}
 
-.button-row button {
-  flex: 0 0 auto;           /* buttons keep their natural width */
-}
 
 .popup-overlay {
   position: fixed;
@@ -2108,6 +2092,7 @@ input, select, textarea {
 		#footer .copyright a {
 			color: inherit;
 		}
+
 
 
 
