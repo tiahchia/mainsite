@@ -14,81 +14,85 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      color: #A9A9A9;
-      margin: 0;
-      padding: 0;
-      background-color: rgba(36, 38, 41, 0.975);
-    }
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    color: #A9A9A9;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(36, 38, 41, 1); /* solid so content shows clearly */
+    overflow-x: hidden;
+  }
 
-    /* Overlay */
-   .popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  animation: fadeIn 0.5s ease-in-out;
-  -webkit-animation: fadeIn 0.5s ease-in-out;
-  will-change: opacity;
-}
+  /* Overlay */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: fadeIn 0.5s ease-in-out;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
+  /* Pop-up box */
+  .popup-box {
+    background-color: rgba(36, 38, 41, 0.7); /* semi-transparent to see content behind */
+    border: 2px solid #FF1FA9;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px); /* optional: adds frosted glass effect */
+  }
 
-    /* Pop-up box */
-    .popup-box {
- 	  background-color: rgba(36, 38, 41, 0.95); /* slightly transparent */
-      border: 2px solid #FF1FA9;
-      border-radius: 16px;
-      padding: 30px;
-      text-align: center;
-      max-width: 600px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
+  .popup-box h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #FFFFFF; /* readable on semi-transparent dark background */
+  }
 
-    .popup-box h2 {
-      margin: 0 0 10px;
-      font-size: 24px;
-  	  color: #D3D3D3; /* visible on dark background */
-    }
+  .popup-box p {
+    font-size: 16px;
+    color: #D3D3D3;
+    margin-bottom: 40px;
+  }
 
-    .popup-box p {
-      font-size: 16px;
-      color: #D3D3D3;
-      margin-bottom: 40px;
-    }
+  .popup-box button {
+    background-color: rgba(255, 255, 255, 0.15); /* semi-transparent button */
+    color: #FF1FA9;
+    border: 1px solid #FF1FA9;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 
-    .popup-box button {
-      background-color: rgba(36, 38, 41, 0.975);
-      color: #FF1FA9;
-      border: 1px solid #FF1FA9;
-      border-radius: 5px;
-      padding: 1px 2px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+  .popup-box button:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 12px #ffb6c1aa;
+    transform: scale(1.05);
+  }
 
-    .popup-box button:hover {
-      background-color: rgba(36, 38, 41, 0.975);
-      color: #FF1FA9;
-      box-shadow: 0 0 12px #ffb6c1aa;
-      transform: scale(1.05);
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  </style>
+  /* Prevent page scroll when popup is open */
+  body.popup-open {
+    overflow: hidden;
+  }
+</style>
 
   <!-- Schema markup for SEO -->
   <script type="application/ld+json">
@@ -536,6 +540,7 @@
 	</body>
 
 </html>
+
 
 
 
