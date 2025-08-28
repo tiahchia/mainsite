@@ -32,7 +32,7 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: rgba(32, 32, 35, 0); /* slightly more transparent */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +45,7 @@
 
     /* Pop-up box */
     .popup-box {
-      background-color: rgba(36, 38, 41, 0.975);
+ 	  background-color: rgba(36, 38, 41, 0.95); /* slightly transparent */
       border: 2px solid #FF1FA9;
       border-radius: 16px;
       padding: 30px;
@@ -57,7 +57,7 @@
     .popup-box h2 {
       margin: 0 0 10px;
       font-size: 24px;
-      color: rgba(36, 38, 41, 0.975);
+  	  color: #fff; /* visible on dark background */
     }
 
     .popup-box p {
@@ -536,6 +536,7 @@
 	</body>
 
 </html>
+
 
 
 
