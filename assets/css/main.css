@@ -72,6 +72,17 @@
 	}
 }
 
+.button-row {
+  display: flex;            /* aligns children horizontally */
+  flex-wrap: wrap;          /* allows wrapping on smaller screens */
+  gap: 10px;                /* space between buttons */
+  justify-content: center;  /* center buttons horizontally */
+  margin: 20px 0;
+}
+
+.button-row button {
+  flex: 0 0 auto;           /* buttons keep their natural width */
+}
 
 .popup-overlay {
   position: fixed;
@@ -2095,6 +2106,7 @@ input, select, textarea {
 		#footer .copyright a {
 			color: inherit;
 		}
+
 
 
 
