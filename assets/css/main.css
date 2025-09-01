@@ -1,12 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic");
 
-/*
-	Multiverse by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-
-*/
 
 @-moz-keyframes spinner {
 	0% {
@@ -73,6 +67,7 @@
 }
 
 
+
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -110,7 +105,9 @@
 }
 
 .popup-box button:hover {
-  background-color: #ff9cb3;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 12px #ffb6c1aa;
+  transform: scale(1.05);
 }
 
 @keyframes fadeIn {
@@ -2095,6 +2092,11 @@ input, select, textarea {
 		#footer .copyright a {
 			color: inherit;
 		}
+
+
+
+
+
 
 
 
