@@ -1,22 +1,10 @@
-Multiverse 
+I’m Tiah —a front-end developer still early in my tech
+journey but I do have caffeine ☕, curiosity, and a solid grasp of code.
+All jokes aside I am committed to helping startups
+and small brands build strong foundations online at a cost that makes sense.
+No complicated platforms or scary hidden fees — just elegant and effective web design.
+Whether you’re a small business, freelancer, or creative, our simple and static web design approach keeps your online presence professional, affordable, and easy to manage.
+Reach out today 📱 and we can get something started!
 
-Say hello to Multiverse, a slick, one-page gallery design with a fully functional lightbox
-(courtesy of my Poptrox plugin for jQuery) and a custom, reusable "panel" system (click the
-"About" button in the lower right to see what I mean). Had a ton of fun putting this one
-together, and I hope you have as much fun working with it :)
-
-
-
-Credits:
-
-	Demo Images:
-		Unsplash (unsplash.com)
-
-	Icons:
-		Font Awesome (fontawesome.io)
-
-	Other:
-		jQuery (jquery.com)
-		Poptrox (github.com/ajlkn/jquery.poptrox)
-
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+This page is "Constantly under Construction" due to updating and uploading new/current Templates. Also, improvement is everywhere! These templates are fully customizable and work within the
+CC License (3.0) ©
