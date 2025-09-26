@@ -39,6 +39,98 @@
             </header>
             <main class="mb-auto col-12">
               <h1>Let's Chat!</h1>
+              <style>
+/* Contact form container */
+form {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Fields grid */
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+}
+
+.field.half {
+  grid-column: span 1;
+}
+
+/* Inputs & textarea */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.2);
+  outline: none;
+}
+
+/* Actions (buttons) */
+.actions {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.actions li {
+  margin: 0;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+input[type="submit"].primary {
+  background: #4f46e5;
+  color: #fff;
+}
+
+input[type="submit"].primary:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
+input[type="reset"] {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+input[type="reset"]:hover {
+  background: #e5e7eb;
+}
+</style>
+
 <form action="https://formsubmit.co/eskildsentiah@icloud.com" method="POST"> <div class="fields"> <div class="field half"> <input type="text" name="name" placeholder="Name:" required=""> </div> <div class="field half"> <input type="email" name="email" placeholder="Email here:" required=""> </div> <div class="field"> <textarea name="message" rows="4" placeholder="Shoot me a Message!" required=""></textarea> </div> </div> <ul class="actions"> <li><input type="submit" value="Send" class="primary"></li> <li><input type="reset" value="Reset"></li> </ul> </form>
             </main>
           </div>
