@@ -4,12 +4,12 @@
   <head>
       <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-  <meta name="description" content="A well made and handcrafted Bootstrap 5 template">
+  <meta name="description" content="A well made and handcrafted Bootstrap 5 template affordable and easy to use">
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
-  <meta name="author" content="Holger Koenemann">
+  <meta name="author" content="Tiah Eskildsen">
   <meta name="generator" content="Eleventy v2.0.1">
   <meta name="HandheldFriendly" content="true">
   <title>Let's Talk about it!</title>
@@ -31,30 +31,105 @@
     <path d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
     <path d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
   </svg>
-  <span class="ms-md-1 mt-1 fw-bolder me-md-5">Simple & Static</span>
+ 
+    <img src="img/favicon-32x32.png">𝚂𝚒𝚖𝚙𝚕𝚎 & 𝚂𝚝𝚊𝚝𝚒𝚌</a>
+ 
 </a>
 
             </header>
             <main class="mb-auto col-12">
               <h1>Let's Chat!</h1>
-              
-<form action="https://formsubmit.co/eskildsentiah@icloud.com" method="POST">
-  <div class="fields">
-    <div class="field half">
-      <input type="text" name="name" placeholder="Name:" required="">
-    </div>
-    <div class="field half">
-      <input type="email" name="email" placeholder="Email here:" required="">
-    </div>
-    <div class="field">
-      <textarea name="message" rows="4" placeholder="Shoot me a Message!" required=""></textarea>
-    </div>
-  </div>
-  <ul class="actions">
-    <li><input type="submit" value="Send" class="primary"></li>
-    <li><input type="reset" value="Reset"></li>
-  </ul>
-</form>
+<style>
+/* Contact form container */
+form {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Fields grid */
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+}
+
+.field.half {
+  grid-column: span 1;
+}
+
+/* Inputs & textarea */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.2);
+  outline: none;
+}
+
+/* Actions (buttons) */
+.actions {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.actions li {
+  margin: 0;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+input[type="submit"].primary {
+  background: #4f46e5;
+  color: #fff;
+}
+
+input[type="submit"].primary:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
+input[type="reset"] {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+input[type="reset"]:hover {
+  background: #e5e7eb;
+}
+</style>
 
             </main>
           </div>
