@@ -16,15 +16,21 @@
     <link rel="stylesheet" href="css/theme.min.css">
 
     <style>
+        /* Body background */
+        body {
+            background-color: #121212; /* very dark gray */
+            color: #f0f0f0; /* optional: light text for contrast */
+        }
+
         /* Gradient scroll box styling */
         .huggingface-container {
             max-width: 800px;
             margin: 40px auto;
             border-radius: 16px;
             overflow: auto;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* darker shadow for dark bg */
             border: 1px solid rgba(255,255,255,0.1);
-            background: linear-gradient(135deg, #4B0082, #1E0037);
+            background: linear-gradient(135deg, #4B0082, #1E0037); /* dark purple gradient */
             padding: 10px;
         }
 
@@ -33,6 +39,11 @@
             height: 600px;
             border: none;
             border-radius: 12px;
+        }
+
+        footer {
+            background-color: #1c1c1c; /* match dark theme */
+            color: #f0f0f0;
         }
     </style>
 </head>
@@ -46,7 +57,7 @@
         ></iframe>
     </div>
 
-    <footer class="bg-black border-top border-dark">
+    <footer class="border-top border-dark">
         <div class="container text-center small py-vh-2 border-top border-dark">
             Made by <img src="img/favicon-32x32.png" alt="logo"> 𝚂𝚒𝚖𝚙𝚕𝚎 & 𝚂𝚝𝚊𝚝𝚒𝚌
         </div>
@@ -54,3 +65,4 @@
 
 </body>
 </html>
+
