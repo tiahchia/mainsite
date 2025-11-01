@@ -19,7 +19,7 @@
         /* Body background */
         body {
             background-color: #121212; /* very dark gray */
-            color: #f0f0f0; /* optional: light text for contrast */
+            color: #f0f0f0;
         }
 
         /* Gradient scroll box styling */
@@ -28,9 +28,9 @@
             margin: 40px auto;
             border-radius: 16px;
             overflow: auto;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* darker shadow for dark bg */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.1);
-            background: linear-gradient(135deg, #4B0082, #1E0037); /* dark purple gradient */
+            background: linear-gradient(135deg, #4B0082, #1E0037);
             padding: 10px;
         }
 
@@ -42,19 +42,39 @@
         }
 
         footer {
-            background-color: #1c1c1c; /* match dark theme */
+            background-color: #1c1c1c;
             color: #f0f0f0;
+        }
+
+        /* Navbar tweaks */
+        .navbar {
+            background-color: #1c1c1c; /* dark navbar */
+            padding: 0.5rem 1rem;
+        }
+
+        .navbar a.navbar-brand {
+            color: #f0f0f0;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar a.navbar-brand img {
+            margin-right: 0.5rem;
+            vertical-align: middle;
         }
     </style>
 </head>
 <body class="h-100">
-     <div class="container">
-    <a class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="index.html">
 
-      
-  <span class="ms-md-1 mt-1 fw-bolder me-md-5"><img src="img/favicon-32x32.png">𝚂𝚒𝚖𝚙𝚕𝚎 & 𝚂𝚝𝚊𝚝𝚒𝚌
-  </span>
-	</a>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container d-flex justify-content-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/favicon-32x32.png" alt="logo">
+                𝚂𝚒𝚖𝚙𝚕𝚎 & 𝚂𝚝𝚊𝚝𝚒𝚌
+            </a>
+        </div>
+    </nav>
 
     <!-- Embedded Hugging Face Space -->
     <div class="huggingface-container">
@@ -64,6 +84,7 @@
         ></iframe>
     </div>
 
+    <!-- Footer -->
     <footer class="border-top border-dark">
         <div class="container text-center small py-vh-2 border-top border-dark">
             Made by <img src="img/favicon-32x32.png" alt="logo"> 𝚂𝚒𝚖𝚙𝚕𝚎 & 𝚂𝚝𝚊𝚝𝚒𝚌
