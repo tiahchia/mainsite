@@ -15,7 +15,7 @@
     <title>Compiler - Simple & Static</title>
     <link rel="stylesheet" href="css/theme.min.css">
 
-     <style>
+    <style>
         /* Gradient scroll box styling */
         .huggingface-container {
             max-width: 800px;
@@ -24,7 +24,7 @@
             overflow: auto;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             border: 1px solid rgba(255,255,255,0.1);
-            background: linear-gradient(135deg, #4B0082, #1E0037); /* dark purple gradient */
+            background: linear-gradient(135deg, #4B0082, #1E0037);
             padding: 10px;
         }
 
@@ -39,11 +39,12 @@
 <body class="h-100">
 
     <!-- Embedded Hugging Face Space -->
-    <iframe
-	src="https://tiahchia-learningspaces.hf.space"
-	frameborder="0"
-></iframe>
-
+    <div class="huggingface-container">
+        <iframe
+            src="https://tiahchia-learningspaces.hf.space?embed=true"
+            allowfullscreen
+        ></iframe>
+    </div>
 
     <footer class="bg-black border-top border-dark">
         <div class="container text-center small py-vh-2 border-top border-dark">
