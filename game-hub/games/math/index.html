@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reaction Flow</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing:border-box; font-family:system-ui,-apple-system; }
+
+body {
+  margin:0;
+  height:100vh;
+  background:radial-gradient(circle at top,#0f172a,#020617 70%);
+  color:#e5e7eb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.card {
+  width:min(420px,92vw);
+  padding:36px 28px 40px;
+  border-radius:36px;
+  background:linear-gradient(180deg,#020617,#020617e6);
+  box-shadow:
+    0 50px 140px rgba(0,0,0,.85),
+    inset 0 0 0 1px rgba(255,255,255,.06);
+  text-align:center;
+}
+
+.title {
+  font-size:.8rem;
+  letter-spacing:.18em;
+  opacity:.55;
+  margin-bottom:10px;
+}
+
+.instruction {
+  font-size:1.05rem;
+  margin-bottom:26px;
+  opacity:.85;
+}
+
+/* TARGET */
+.target {
+  width:120px;
+  height:120px;
+  margin:0 auto 28px;
+  border-radius:50%;
+  background:radial-gradient(circle,#1e293b,#020617);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.12);
+  transition:all .2s ease;
+}
+
+.target.ready {
+  background:radial-gradient(circle,#22c55e,#15803d);
+  box-shadow:0 0 40px rgba(34,197,94,.55);
+}
+
+.target.fast {
+  background:radial-gradient(circle,#38bdf8,#0369a1);
+  box-shadow:0 0 40px rgba(56,189,248,.55);
+}
+
+.target.too-soon {
+  background:radial-gradient(circle,#ef4444,#7f1d1d);
+  box-shadow:0 0 40px rgba(239,68,68,.55);
+}
+
+/* RESULTS */
+.result {
+  font-size:.9rem;
+  min-height:22px;
+  opacity:.7;
+}
+
+.best {
+  margin-top:8px;
+  font-size:.7rem;
+  letter-spacing:.12em;
+  opacity:.4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="title">REACTION FLOW</div>
+  <div class="instruction" id="instruction">Wait for the signal</div>
+
+  <div class="target" id="target"></div>
+
+  <div class="result" id="result"></div>
+  <div class="best" id="best"></div>
+</div>
+
+<script>
+/* ===== AUDIO ===== */
+const ctx = new (window.AudioContext || window.webkitAudioContext)();
+function cue() {
+  const t = ctx.currentTime;
+  const o = ctx.createOscillator();
+  const g = ctx.createGain();
+  o.type = "sine";
+  o.frequency.value = 520;
+  g.gain.setValueAtTime(0,t);
+  g.gain.linearRampToValueAtTime(.06,t+.02);
+  g.gain.exponentialRampToValueAtTime(.001,t+.3);
+  o.connect(g); g.connect(ctx.destination);
+  o.start(); o.stop(t+.35);
+}
+
+/* ===== STATE ===== */
+const target = document.getElementById("target");
+const instruction = document.getElementById("instruction");
+const result = document.getElementById("result");
+const bestEl = document.getElementById("best");
+
+let waiting = false;
+let startTime = 0;
+let timeoutId = null;
+let difficulty = 0;
+
+let best = localStorage.getItem("reaction-best");
+if(best) bestEl.textContent = `BEST ${best} ms`;
+
+/* ===== FLOW LOOP ===== */
+function nextRound() {
+  reset();
+  instruction.textContent = "Wait...";
+  waiting = true;
+
+  const delay = 900 + Math.random() * (2200 - difficulty * 120);
+  timeoutId = setTimeout(() => {
+    target.classList.add("ready");
+    cue();
+    instruction.textContent = "Tap";
+    startTime = performance.now();
+  }, Math.max(600, delay));
+}
+
+function reset() {
+  clearTimeout(timeoutId);
+  target.className = "target";
+  waiting = false;
+}
+
+/* ===== INPUT ===== */
+target.addEventListener("click", () => {
+  ctx.resume();
+
+  if(!waiting) return;
+
+  if(!target.classList.contains("ready")) {
+    target.classList.add("too-soon");
+    instruction.textContent = "Too soon";
+    result.textContent = "Slow down";
+    waiting = false;
+    setTimeout(nextRound,1200);
+    return;
+  }
+
+  const reaction = Math.round(performance.now() - startTime);
+  result.textContent = `${reaction} ms`;
+
+  if(reaction < 220) target.classList.add("fast");
+
+  if(!best || reaction < best) {
+    best = reaction;
+    localStorage.setItem("reaction-best", best);
+    bestEl.textContent = `BEST ${best} ms`;
+  }
+
+  instruction.textContent = "Nice";
+  difficulty++;
+  waiting = false;
+
+  setTimeout(nextRound,900);
+});
+
+/* ===== START ===== */
+setTimeout(nextRound,1200);
+</script>
+
+</body>
+</html>
