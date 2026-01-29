@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Living Garden</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --sky:#1e3a8a;
+  --night:#020617;
+  --ground:#14532d;
+  --panel:#0f172a;
+  --glow:#86efac;
+}
+*{box-sizing:border-box;font-family:system-ui}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(180deg,var(--sky),var(--ground));
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  transition:background 1.2s;
+}
+body.night{
+  background:linear-gradient(180deg,var(--night),#020617);
+}
+
+.game{
+  width:min(480px,95vw);
+  background:linear-gradient(180deg,#020617,var(--panel));
+  border-radius:32px;
+  padding:20px;
+  box-shadow:0 50px 120px rgba(0,0,0,.8);
+  text-align:center;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.weather{
+  font-size:1.1rem;
+  opacity:.85;
+}
+
+.sun{
+  font-size:2.2rem;
+  cursor:pointer;
+  filter:drop-shadow(0 0 14px #fde68a);
+}
+
+.garden{
+  position:relative;
+  height:260px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  margin:14px 0;
+}
+
+.plant{
+  font-size:4.4rem;
+  cursor:pointer;
+  transition:transform .15s,filter .4s;
+}
+.plant:active{transform:scale(.9)}
+
+.stage-1{}
+.stage-2{filter:drop-shadow(0 0 10px #4ade80)}
+.stage-3{filter:drop-shadow(0 0 18px #22c55e)}
+.stage-4{filter:drop-shadow(0 0 26px #f472b6)}
+.stage-5{filter:drop-shadow(0 0 36px #86efac)}
+
+.particle{
+  position:absolute;
+  font-size:1.4rem;
+  animation:float 1.2s ease-out forwards;
+}
+@keyframes float{
+  to{transform:translateY(-120px);opacity:0}
+}
+
+.controls{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+button{
+  background:#1e293b;
+  border:none;
+  border-radius:16px;
+  padding:14px;
+  color:white;
+  cursor:pointer;
+}
+
+.badges{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:12px;
+}
+
+.badge{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#020617;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:1.3rem;
+  opacity:.25;
+  transition:.4s;
+}
+
+.badge.unlocked{
+  opacity:1;
+  filter:drop-shadow(0 0 12px var(--glow));
+  animation:pop .4s ease;
+}
+@keyframes pop{50%{transform:scale(1.2)}}
+
+small{opacity:.6}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+  <div class="top">
+    <div>💧 <span id="water">0</span></div>
+    <div class="weather" id="weather">☀️ Clear</div>
+    <div class="sun" onclick="sunClick()">☀️</div>
+  </div>
+
+  <div class="garden">
+    <div class="plant stage-1" id="plant">🌰</div>
+  </div>
+
+  <div class="controls">
+    <button onclick="upgradeWater()">Better Water<br><small id="wCost"></small></button>
+    <button onclick="upgradeSun()">Sun Power<br><small id="sCost"></small></button>
+  </div>
+
+  <div class="badges" id="badges"></div>
+
+</div>
+
+<script>
+/* STATE */
+const state={
+  water:+localStorage.getItem("water")||0,
+  click:+localStorage.getItem("click")||1,
+  sun:+localStorage.getItem("sun")||0,
+  weather:0,
+  night:false,
+  badges:JSON.parse(localStorage.getItem("badges"))||{}
+};
+
+const stages=["🌰","🌱","🌿","🌸","🌳"];
+const badgeData={
+  2:{icon:"🌱",name:"Sprout"},
+  3:{icon:"🌿",name:"Growth"},
+  4:{icon:"🌸",name:"Bloom"},
+  5:{icon:"🌳",name:"Tree"}
+};
+
+const weatherTypes=[
+  {name:"Clear",icon:"☀️",mult:1},
+  {name:"Rain",icon:"🌧️",mult:2},
+  {name:"Warm Rain",icon:"🌦️",mult:3}
+];
+
+/* HELPERS */
+function stage(){
+  if(state.water>600)return 5;
+  if(state.water>350)return 4;
+  if(state.water>180)return 3;
+  if(state.water>60)return 2;
+  return 1;
+}
+
+function particle(emoji){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.textContent=emoji;
+  p.style.left="50%";
+  p.style.bottom="40px";
+  document.querySelector(".garden").appendChild(p);
+  setTimeout(()=>p.remove(),1200);
+}
+
+function unlockBadge(s){
+  if(badgeData[s] && !state.badges[s]){
+    state.badges[s]=true;
+    localStorage.setItem("badges",JSON.stringify(state.badges));
+  }
+}
+
+/* RENDER */
+function render(){
+  water.textContent=Math.floor(state.water);
+  weather.textContent=
+    `${weatherTypes[state.weather].icon} ${weatherTypes[state.weather].name}`;
+  document.body.classList.toggle("night",state.night);
+
+  const s=stage();
+  plant.textContent=stages[s-1];
+  plant.className="plant stage-"+s;
+
+  unlockBadge(s);
+
+  badges.innerHTML="";
+  Object.entries(badgeData).forEach(([lvl,b])=>{
+    const d=document.createElement("div");
+    d.className="badge"+(state.badges[lvl]?" unlocked":"");
+    d.textContent=b.icon;
+    badges.appendChild(d);
+  });
+
+  wCost.textContent=`Cost: ${state.click*20}`;
+  sCost.textContent=`Cost: ${(state.sun+1)*40}`;
+
+  localStorage.setItem("water",state.water);
+  localStorage.setItem("click",state.click);
+  localStorage.setItem("sun",state.sun);
+}
+
+/* INPUT */
+plant.onclick=()=>{
+  const gain=state.click*weatherTypes[state.weather].mult;
+  state.water+=gain;
+  for(let i=0;i<Math.min(gain,3);i++) particle("💧");
+  render();
+};
+
+function sunClick(){
+  const gain=state.sun*2;
+  state.water+=gain;
+  if(gain>0) particle("☀️");
+  render();
+}
+
+function upgradeWater(){
+  const c=state.click*20;
+  if(state.water>=c){state.water-=c;state.click++;render()}
+}
+
+function upgradeSun(){
+  const c=(state.sun+1)*40;
+  if(state.water>=c){state.water-=c;state.sun++;render()}
+}
+
+/* WORLD */
+setInterval(()=>{
+  state.weather=Math.floor(Math.random()*weatherTypes.length);
+  state.night=!state.night;
+  render();
+},16000);
+
+setInterval(()=>{
+  const gain=state.sun*weatherTypes[state.weather].mult;
+  state.water+=gain;
+  if(gain>0) particle("💧");
+  render();
+},1000);
+
+render();
+</script>
+
+</body>
+</html>
